@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { RootModule } from './root.module';
 import { Request, Response, NextFunction } from 'express';
+
+import { AppModule } from './app.module';
+// import { RootModule } from './root.module';
 
 // middlewares
 export function globalMiddlewareOne(req: Request, res: Response, next: NextFunction) {
@@ -13,11 +15,19 @@ export function globalMiddlewareTwo(req: Request, res: Response, next: NextFunct
   next();
 };
 
-async function bootstrap() {
-  const app = await NestFactory.create(RootModule);
+// it's for books
+// async function bootstrap() {
+//   const app = await NestFactory.create(RootModule);
   
-  app.use(globalMiddlewareOne);
-  app.use(globalMiddlewareTwo);
+//   app.use(globalMiddlewareOne);
+//   app.use(globalMiddlewareTwo);
+
+//   await app.listen(process.env.PORT ?? 3000);
+// }
+
+// it's for authentication
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
   await app.listen(process.env.PORT ?? 3000);
 }

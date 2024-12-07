@@ -1,5 +1,6 @@
 
 import { Module, NestModule,MiddlewareConsumer, RequestMethod } from '@nestjs/common';
+
 import { BookService } from './books.service';
 import { BookController } from './books.controller';
 import {BookMiddlewareOne, BookMiddlewareTwo} from './books.middleware';
@@ -16,7 +17,7 @@ export class BooksModule implements NestModule{
     consumer
       .apply(BookMiddlewareOne)
       .exclude(
-        {path:'books/finds', method:RequestMethod.GET},
+        {path:'books/findAll', method:RequestMethod.GET},
         // 'books/(.*)'
       )
       .forRoutes(

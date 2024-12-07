@@ -13,12 +13,12 @@ export class BookService {
         })
     }
 
-    updateBook(res:Response, updateBook:BookDto) :any {
-        return res.status(201).json({
+    updateBook(updateBook:BookDto) :any {
+        return {
             success:true,
             message: "Book updated Successfully!",
             data: updateBook
-        })
+        }
     }
 
     deleteBook(res:Response, id:number) :any {
