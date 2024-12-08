@@ -10,4 +10,8 @@ import { AuthModule } from './auth/auth.module';
   providers: [],
   exports: []
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log('hi, I am app module');
+  }
+}

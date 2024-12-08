@@ -1,4 +1,3 @@
-
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
@@ -7,7 +6,8 @@ import { jwtConstants } from './constants';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
-// import { LocalStrategy } from './local.strategy';
+import { LocalStrategy } from './strategies/local.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
@@ -18,11 +18,16 @@ import { UsersModule } from '../users/users.module';
       signOptions: { expiresIn: '60s' },
     }),
   ],
-  controllers:[AuthController],
+  controllers: [AuthController],
   providers: [
-        AuthService,
-        // LocalStrategy
-    ],
-  exports: [AuthService],
+    AuthService, 
+    LocalStrategy,
+    JwtStrategy,
+  ],
+  exports: [],
 })
-export class AuthModule {}
+export class AuthModule {
+  constructor() {
+    console.log('hi, I am auth module');
+  }
+}

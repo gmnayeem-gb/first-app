@@ -8,13 +8,15 @@ export class UsersService {
             username: "john",
             email: "john@example.com",
             password: "12345",
-            age: 30
+            age: 30,
+            role: "user"
         },
         {
             username: "jane",
             email: "jane@example.com",
-            password: "54321",
-            age: 28
+            password: "12345",
+            age: 28,
+            role: "admin"
         }
     ];
 
