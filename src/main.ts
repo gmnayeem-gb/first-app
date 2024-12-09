@@ -1,4 +1,4 @@
-import { NestFactory } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';  
 import { Request, Response, NextFunction } from 'express';
 
 import { AppModule } from './app.module';
@@ -28,7 +28,6 @@ export function globalMiddlewareTwo(req: Request, res: Response, next: NextFunct
 // it's for authentication
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap(); 
